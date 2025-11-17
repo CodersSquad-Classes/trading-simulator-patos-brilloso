@@ -1,6 +1,6 @@
 #include "order.h"
 
-order::order(int id,
+Order::Order(int id,
              const std::string& symbol,
              Side side,
              double price,
@@ -15,7 +15,7 @@ order::order(int id,
 {
 }
 
-std::string order::sideToString() const {
+std::string Order::sideToString() const {
     if (side == Side::BUY) {
         return "BUY";
     } else {
