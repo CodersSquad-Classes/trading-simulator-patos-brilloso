@@ -36,3 +36,6 @@ void MatchingEngine::printAllBooks() const {
         pair.second.printSimple();
     }
 }
+const std::unordered_map<std::string, OrderBook>& MatchingEngine::getBooks() const {
+    return m_books;
+}

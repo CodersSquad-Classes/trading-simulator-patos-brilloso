@@ -41,3 +41,32 @@ void OrderBook::printSimple() const {
 std::string OrderBook::getSymbol() const {
     return m_symbol;
 }
+std::vector<Order> OrderBook::getTopBuys(int depth) const {
+    std::vector<Order> result;
+    if (depth <= 0) return result;
+
+    auto copy = m_buyOrders; // copy so we do NOT modify the real book
+
+    int count = 0;
+    while (!copy.empty() && count < depth) {
+        result.push_back(copy.top());
+        copy.pop();
+        count++;
+    }
+    return result;
+}
+
+std::vector<Order> OrderBook::getTopSells(int depth) const {
+    std::vector<Order> result;
+    if (depth <= 0) return result;
+
+    auto copy = m_sellOrders;
+
+    int count = 0;
+    while (!copy.empty() && count < depth) {
+        result.push_back(copy.top());
+        copy.pop();
+        count++;
+    }
+    return result;
+}

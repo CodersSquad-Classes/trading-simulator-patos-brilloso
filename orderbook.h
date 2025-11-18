@@ -34,14 +34,15 @@ class OrderBook {
 public:
     explicit OrderBook(const std::string& symbol);
 
-    // Right now it only stores the order.
-    // Luego le metemos matching.
     void addOrder(const Order& order);
 
-    // Simple print to check the top buy/sell
     void printSimple() const;
 
     std::string getSymbol() const;
+
+    //get top N buy and sell orders (for dashboard)
+    std::vector<Order> getTopBuys(int depth) const;
+    std::vector<Order> getTopSells(int depth) const;
 
 private:
     std::string m_symbol;
